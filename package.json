@@ -1,0 +1,30 @@
+{
+  "name": "vue-loader-15-tslint-issue",
+  "version": "0.1.0",
+  "description": "Demo of vue-loader 15 and tslint not playing nice together",
+  "main": "/",
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "cross-env NODE_ENV=production node_modules/.bin/webpack --config webpack.config.js",
+    "lint": "tslint --project ."
+  },
+  "license": "MIT",
+  "dependencies": {
+    "vue": "2.5.16"
+  },
+  "devDependencies": {
+    "cross-env": "5.1.5",
+    "html-webpack-plugin": "3.2.0",
+    "rimraf": "2.6.2",
+    "ts-loader": "4.3.0",
+    "tslint": "5.10.0",
+    "tslint-loader": "3.6.0",
+    "typescript": "2.8.3",
+    "vue-class-component": "6.2.0",
+    "vue-loader": "15.1.0",
+    "vue-property-decorator": "6.0.0",
+    "vue-template-compiler": "2.5.16",
+    "webpack": "4.8.3",
+    "webpack-cli": "2.1.3"
+  }
+}
