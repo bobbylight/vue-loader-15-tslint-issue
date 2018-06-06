@@ -5,9 +5,12 @@
 </template>
 
 <script lang="ts">
-@Component
-export default class App extends Vue {
+export default {
 
-    private what: string = 'world';
+    data() {
+        return {
+            what: 'world'
+        };
+    }
 }
 </script>

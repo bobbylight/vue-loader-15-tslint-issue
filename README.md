@@ -6,13 +6,32 @@ This project shows how a basic project using the following tools fails to build 
 * webpack
 * vue-loader 15
 
-A similar setup worked with vue-loader 14.  It appears that vue-loader is passing the TS content to
-tsc, but tsc is unhappy with the `.vue` file extension.
+A similar setup worked with vue-loader 14.
 
-To run:
+## To Run:
 
 ```bash
 git clone https://github.com/bobbylight/vue-loader-15-tslint-issue.git
 npm install
 npm run build
 ```
+
+## Expected Result
+The build completes successfully.
+
+## Actual Result
+As-is, with `typeCheck` disabled for `tslint-loader` in `webpack.config.js`, the build does
+complete, but the entirety of `*.vue` files gets linted, including `<template>` and `<script>` blocks,
+which obviously causes lots of spurious errors.  Besides the fact that you can't use any `tslint` rules
+that require type checking.
+
+If you enable `typeCheck` for `tslint-loader` in `webpack.config.js`, the build fails with errors like
+the following:
+
+```
+Invalid source file: D:\dev\vue-loader-15-tslint-issue\src\app\app.vue. Ensure that the files supplied to
+lint have a .ts, .tsx, .d.ts, .js or .jsx extension.
+```
+
+It appears that when type checking, tslint is checking the actual file name (no `.ts` appended) and
+is thus unhappy.
