@@ -21,8 +21,8 @@ The build completes successfully.
 
 ## Actual Result
 As-is, with `typeCheck` disabled for `tslint-loader` in `webpack.config.js`, the build does
-complete, but the entirety of `*.vue` files gets linted, including `<template>` and `<script>` blocks,
-which obviously causes lots of spurious errors.  Besides the fact that you can't use any `tslint` rules
+complete, but you cannot enable the `no-consecutive-blank-lines` rule because of how `vue-loader` blanks out
+template/style lines instead of removing them.  Besides the fact that you can't use any `tslint` rules
 that require type checking.
 
 If you enable `typeCheck` for `tslint-loader` in `webpack.config.js`, the build fails with errors like

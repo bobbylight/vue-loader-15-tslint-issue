@@ -12,5 +12,5 @@ export default {
             what: 'world'
         };
     }
-}
+};
 </script>

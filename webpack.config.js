@@ -43,25 +43,26 @@ const config = {
     module: {
         rules: [
             {
-                enforce: 'pre',
                 test: /\.ts$/,
                 exclude: /node_modules/,
-                loader: 'tslint-loader'
-                // Enabling the typeCheck option here causes builds to fail:
-                // "Ensure that the files supplied to lint have a .ts, .tsx, .d.ts, .js or .jsx extension."
-                // Commented out like this, the build runs, but all lines of *.vue files are linted, including
-                // <template> and <script> blocks.
-                // , options: {
-                //     typeCheck: true
-                // }
-            },
-            {
-                test: /\.ts$/,
-                exclude: /node_modules/,
-                loader: 'ts-loader',
-                options: {
-                    appendTsSuffixTo: [ /\.vue$/ ]
-                }
+                use: [
+                    {
+                        loader: 'ts-loader',
+                        options: {
+                            appendTsSuffixTo: [ /\.vue$/ ]
+                        }
+                    },
+                    {
+                        loader: 'tslint-loader'
+                        // Enabling the typeCheck option here causes builds to fail:
+                        // "Ensure that the files supplied to lint have a .ts, .tsx, .d.ts, .js or .jsx extension."
+                        // Commented out like this, the build runs, but all lines of *.vue files are linted, including
+                        // <template> and <script> blocks.
+                        // , options: {
+                        //     typeCheck: true
+                        // }
+                    }
+                ]
             },
             {
                 test: /\.vue$/,
